@@ -7,7 +7,7 @@
 
 @media screen and (max-width: 680px) {
     .profile__info {
-        margin: 26px auto 36px;
+        margin: 22.25px auto 36px;
         gap: 14px;
     }
 }
