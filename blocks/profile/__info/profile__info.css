@@ -1,13 +1,13 @@
 .profile__info {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 13px;
     margin-right: auto;
 }
 
 @media screen and (max-width: 680px) {
     .profile__info {
-        margin: 22.25px auto 36px;
+        margin: 22.25px auto 31px;
         gap: 14px;
     }
 }
