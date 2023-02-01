@@ -1,8 +1,18 @@
 .elements__heart {
-    max-width: 22px;
-    max-height: 19px;
-    padding-top: 5px;
-    padding-right: 5px;
+    width: 22px;
+    height: 19px;
+    padding: 0;
+    margin: 0;
+    background-image: url(../../../images/heart.svg);
+    background-size: contain;
+    background-color: transparent;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    border: none;
+    background-position: bottom;
+    
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
 .elements__heart:hover {

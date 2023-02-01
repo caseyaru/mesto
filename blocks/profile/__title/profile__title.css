@@ -9,7 +9,7 @@
 @media screen and (max-width: 680px) {
     .profile__title {
         gap: 10px;
-        align-items: flex-end;
+        padding-right: 0;
         padding-left: 26px;
     }
 }
