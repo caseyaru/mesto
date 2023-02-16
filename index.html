@@ -32,6 +32,7 @@
             <template id="card">
                <li class="elements__card">
                   <img src="#" class="elements__image" alt="#">
+                  <button type="button" class="elements__delete"></button>
                   <div class="elements__string">
                      <h2 class="elements__text"></h2>
                      <button type="button" class="elements__heart"></button>
@@ -106,8 +107,16 @@
             <form class="popup__form popup__form_type_card" name="formSubmit">
                <input type="text" name="mestoName" class="popup__field popup__field_type_mesto-name" placeholder="Название">
                <input type="url" name="mestoLink" class="popup__field popup__field_type_mesto-link" placeholder="Ссылка на картинку">
-               <button type="submit" class="popup__submit">Создать</button>
+               <button type="submit" class="popup__submit popup__submit-mesto">Создать</button>
             </form>
+            <button class="popup__close" type="button"></button>
+         </div>
+      </section>
+
+      <section class="popup popup_type_image">
+         <div class="popup__img-container">
+            <img class="popup__image">
+            <p class="popup__description"></p>
             <button class="popup__close" type="button"></button>
          </div>
       </section>
