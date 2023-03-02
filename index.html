@@ -44,9 +44,30 @@
       <section class="popup popup_type_edit">
          <div class="popup__container">
             <h3 class="popup__title">Редактировать профиль</h3>
-            <form class="popup__form" name="editing">
-               <input type="text" name="profileName" class="popup__field popup__field_type_name">
-               <input type="text" name="profileText" class="popup__field popup__field_type_text">
+            <form class="popup__form" name="editing" novalidate>
+
+               <input type="text" 
+               name="profileName" 
+               class="popup__field popup__field_type_name"
+               id="profileName" 
+               maxlength="40" 
+               minlength="2" 
+               required>
+               <span 
+               class="popup__error popup__field_type_name-error" 
+               id="profileName-error">ммм</span>
+
+               <input type="text" 
+               name="profileText" 
+               class="popup__field popup__field_type_text"
+               id="profileText" 
+               maxlength="200" 
+               minlength="2" 
+               required>
+               <span 
+               class="popup__error opup__field_type_text-error" 
+               id="profileText-error">ммм</span>
+
                <button type="submit" class="popup__submit">Сохранить</button>
             </form>
             <button class="popup__close" type="button"></button>
@@ -55,9 +76,30 @@
       <section class="popup popup_type_add">
          <div class="popup__container">
             <h3 class="popup__title">Новое место</h3>
-            <form class="popup__form" name="adding">
-               <input type="text" name="mestoName" class="popup__field popup__field_type_mesto-name" placeholder="Название">
-               <input type="url" name="mestoLink" class="popup__field popup__field_type_mesto-link" placeholder="Ссылка на картинку">
+            <form class="popup__form" name="adding" novalidate>
+
+               <input type="text" 
+               name="mestoName" 
+               id="mestoName" 
+               class="popup__field popup__field_type_mesto-name" 
+               placeholder="Название" 
+               maxlength="30" 
+               minlength="2" 
+               required>
+               <span
+               id="mestoName-error" 
+               class="popup__error popup__field_type_mesto-name-error"></span>
+
+               <input type="url" 
+               name="mestoLink" 
+               id="mestoLink" 
+               class="popup__field popup__field_type_mesto-link" 
+               placeholder="Ссылка на картинку" 
+               required>
+               <span
+               id="mestoLink-error" 
+               class="popup__error popup__field_type_mesto-link-error"></span>
+
                <button type="submit" class="popup__submit">Создать</button>
             </form>
             <button class="popup__close" type="button"></button>
@@ -70,6 +112,7 @@
             <button class="popup__close" type="button"></button>
          </div>
       </section>
+      <script src="./scripts/validate.js"></script>
       <script src="./scripts/index.js"></script>
    </body>
 </html>

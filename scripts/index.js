@@ -11,11 +11,25 @@ const cardAddButton = document.querySelector('.profile__add-button');
 const formEdit = document.forms.editing; // редактирование профиля
 const formCard = document.forms.adding; // добавление карточки
 
-// открытие попапа
+// открытие и закрытие попапа
 const openPopup = (popup) => { popup.classList.add('popup_opened'); }
-
-// сокрытие попапа
 const closePopup = (popup) => { popup.classList.remove('popup_opened'); }
+
+// закрытие по нажатию на оверлей
+const popupList = document.querySelectorAll('.popup');
+popupList.forEach((item) => {
+   item.addEventListener('click', (evt) => {
+    closePopup(evt.target)
+   });
+});
+
+// закрытие по нажатию на esc
+document.addEventListener('keydown', (evt) => {
+  if (evt.key = 'Escape') {
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+});
 
 const closeButtons = document.querySelectorAll('.popup__close');
 closeButtons.forEach((button) => {
