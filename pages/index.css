@@ -39,4 +39,5 @@
 @import url(../blocks/popup/__field/_type/popup__field_type_mesto-name.css);
 @import url(../blocks/popup/__field/_type/popup__field_type_mesto-link.css);
 @import url(../blocks/popup/__submit/popup__submit.css);
+@import url(../blocks/popup/__submit/popup__submit_disabled.css);
 @import url(../blocks/popup/__close/popup__close.css);

@@ -29,7 +29,8 @@ const hideInputError = (input, config, errorElement) => {
 // проверить валидность формы
 const checkInputValidity = (evt, config) => {
     const input = evt.target;
-    const errorElement = document.querySelector(`.${input.id}-error`);
+    const errorElement = document.querySelector(`#${input.id}-error`);
+    
     if (input.validity.valid) {
         hideInputError(input, config, errorElement)
     } else {
@@ -42,8 +43,20 @@ const enableValidation = (config) => {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
     formList.forEach((form) => {
         form.addEventListener('submit', disableSubmit);
+        form.addEventListener('input', () => {
+            toggleButton(form, config);
+        });
         setEventListeners(form, config);
+        toggleButton(form, config);
     });
+}
+
+// кнопка
+const toggleButton = (form, config) => {
+    const buttonSubmit = form.querySelector(config.submitButtonSelector);
+    const isFormValid = form.checkValidity();
+    buttonSubmit.disabled = !isFormValid;
+    buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
 }
 
 // слушатели на все поля
