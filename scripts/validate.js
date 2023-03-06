@@ -70,3 +70,15 @@ const setEventListeners = (form, config) => {
 };
 
 enableValidation(formValidationConfig)
+
+// сброс ошибок валидации при повторном открытии попапа
+const resetErrors = (form, config) => {
+    const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+    inputList.forEach((input) => {
+        const errorElement = form.querySelector(`#${input.id}-error`);
+        input.classList.remove(config.inputErrorClass);
+        errorElement.classList.remove(config.errorClass);
+        errorElement.textContent = '';
+    });
+    toggleButton (form, config);
+}

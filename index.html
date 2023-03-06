@@ -45,29 +45,10 @@
          <div class="popup__container">
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form" name="editing" novalidate>
-
-               <input type="text" autocomplete="off" 
-               name="profileName" 
-               class="popup__field popup__field_type_name"
-               id="profileName" 
-               maxlength="40" 
-               minlength="2" 
-               required>
-               <span 
-               class="popup__error popup__field_type_name-error" 
-               id="profileName-error">ммм</span>
-
-               <input type="text" autocomplete="off" 
-               name="profileText" 
-               class="popup__field popup__field_type_text"
-               id="profileText" 
-               maxlength="200" 
-               minlength="2" 
-               required>
-               <span 
-               class="popup__error opup__field_type_text-error" 
-               id="profileText-error">ммм</span>
-
+               <input type="text" autocomplete="off" name="profileName" class="popup__field popup__field_type_name"id="profileName" maxlength="40" minlength="2" required>
+               <span class="popup__error" id="profileName-error"></span>
+               <input type="text" autocomplete="off" name="profileText" class="popup__field popup__field_type_text"id="profileText" maxlength="200" minlength="2" required>
+               <span class="popup__error" id="profileText-error"></span>
                <button type="submit" class="popup__submit">Сохранить</button>
             </form>
             <button class="popup__close" type="button"></button>
@@ -77,29 +58,10 @@
          <div class="popup__container">
             <h3 class="popup__title">Новое место</h3>
             <form class="popup__form" name="adding" novalidate>
-
-               <input type="text" autocomplete="off" 
-               name="mestoName" 
-               id="mestoName" 
-               class="popup__field popup__field_type_mesto-name" 
-               placeholder="Название" 
-               maxlength="30" 
-               minlength="2" 
-               required>
-               <span
-               id="mestoName-error" 
-               class="popup__error popup__field_type_mesto-name-error"></span>
-
-               <input type="url"  
-               name="mestoLink" 
-               id="mestoLink" 
-               class="popup__field popup__field_type_mesto-link" 
-               placeholder="Ссылка на картинку" 
-               required>
-               <span
-               id="mestoLink-error" 
-               class="popup__error popup__field_type_mesto-link-error"></span>
-
+               <input type="text" autocomplete="off" name="mestoName" id="mestoName" class="popup__field popup__field_type_mesto-name" placeholder="Название" maxlength="30" minlength="2" required>
+               <span id="mestoName-error" class="popup__error"></span>
+               <input type="url"  name="mestoLink" id="mestoLink" class="popup__field popup__field_type_mesto-link" placeholder="Ссылка на картинку" required>
+               <span id="mestoLink-error" class="popup__error"></span>
                <button type="submit" class="popup__submit">Создать</button>
             </form>
             <button class="popup__close" type="button"></button>

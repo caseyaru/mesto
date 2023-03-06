@@ -11,6 +11,7 @@ const cardAddButton = document.querySelector('.profile__add-button');
 const formEdit = document.forms.editing; // редактирование профиля
 const formCard = document.forms.adding; // добавление карточки
 
+
 // открытие и закрытие попапа
 const openPopup = (popup) => { popup.classList.add('popup_opened'); }
 const closePopup = (popup) => { popup.classList.remove('popup_opened'); }
@@ -45,9 +46,10 @@ const nameStart = document.querySelector('.profile__name');
 const jobStart = document.querySelector('.profile__text');
 
 function handleProfileEditButton () {
-  openPopup(popupEdit);
   nameInput.value = nameStart.textContent;
   jobInput.value = jobStart.textContent;
+  resetErrors(formEdit, formValidationConfig);
+  openPopup(popupEdit);
 }
 profileEditButton.addEventListener ('click', handleProfileEditButton);
 
@@ -56,7 +58,7 @@ function handleFormEditSubmit (evt) {
 
     nameStart.textContent = nameInput.value;
     jobStart.textContent = jobInput.value;
-
+    
     closePopup(popupEdit);
 }
 formEdit.addEventListener('submit', handleFormEditSubmit);
@@ -144,6 +146,7 @@ const addNewCard = (evt) => {
   }
   cardsList.append(getCard(newCard));
   evt.target.reset();
+  resetErrors(formCard, formValidationConfig);
   closePopup(popupAdd);
 }
 formCard.addEventListener('submit', addNewCard);
