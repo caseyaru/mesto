@@ -7,11 +7,6 @@ const formValidationConfig = {
     errorClass: 'popup__error_visible'
 }
 
-// дефолт
-const disableSubmit = (evt) => {
-    evt.preventDefault()
-}
-
 // показать сообщение об ошибке
 const showInputError = (input, config, errorElement) => {
     input.classList.add(config.inputErrorClass);
@@ -42,32 +37,21 @@ const checkInputValidity = (evt, config) => {
 const enableValidation = (config) => {
     const formList = Array.from(document.querySelectorAll(config.formSelector));
     formList.forEach((form) => {
-        form.addEventListener('submit', disableSubmit);
-        form.addEventListener('input', () => {
-            toggleButton(form, config);
+        const buttonSubmit = form.querySelector(config.submitButtonSelector);
+        form.addEventListener('input', (evt) => {
+            toggleButton(buttonSubmit, form, config);
+            checkInputValidity(evt, config);
         });
-        setEventListeners(form, config);
-        toggleButton(form, config);
+        toggleButton(buttonSubmit, form, config);
     });
 }
 
 // кнопка
-const toggleButton = (form, config) => {
-    const buttonSubmit = form.querySelector(config.submitButtonSelector);
+const toggleButton = (buttonSubmit, form, config) => {
     const isFormValid = form.checkValidity();
     buttonSubmit.disabled = !isFormValid;
     buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
 }
-
-// слушатели на все поля
-const setEventListeners = (form, config) => {
-    const inputList = Array.from(form.querySelectorAll(config.inputSelector));
-    inputList.forEach((item) => {
-        item.addEventListener('input', (evt) => {
-            checkInputValidity(evt, config);
-        });
-    });
-};
 
 enableValidation(formValidationConfig)
 
@@ -76,9 +60,8 @@ const resetErrors = (form, config) => {
     const inputList = Array.from(form.querySelectorAll(config.inputSelector));
     inputList.forEach((input) => {
         const errorElement = form.querySelector(`#${input.id}-error`);
-        input.classList.remove(config.inputErrorClass);
-        errorElement.classList.remove(config.errorClass);
-        errorElement.textContent = '';
+        hideInputError(input, config, errorElement);
     });
-    toggleButton (form, config);
+    const buttonSubmit = form.querySelector(config.submitButtonSelector);
+    toggleButton (buttonSubmit, form, config);
 }

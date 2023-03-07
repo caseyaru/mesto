@@ -14,3 +14,7 @@
     width: 18px;
     height: 19px;
 }
+
+.elements__delete:hover {
+    opacity: 0.6;
+}
