@@ -27,9 +27,9 @@ const checkInputValidity = (evt, config) => {
     const errorElement = document.querySelector(`#${input.id}-error`);
     
     if (input.validity.valid) {
-        hideInputError(input, config, errorElement)
+        hideInputError(input, config, errorElement);
     } else {
-        showInputError(input, config, errorElement)
+        showInputError(input, config, errorElement);
     }
 }
 
@@ -53,7 +53,7 @@ const toggleButton = (buttonSubmit, form, config) => {
     buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
 }
 
-enableValidation(formValidationConfig)
+enableValidation(formValidationConfig);
 
 // сброс ошибок валидации при повторном открытии попапа
 const resetErrors = (form, config) => {

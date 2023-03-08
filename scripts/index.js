@@ -11,6 +11,10 @@ const buttonAddCard = document.querySelector('.profile__add-button');
 const formEdit = document.forms.editing; // редактирование профиля
 const formCard = document.forms.adding; // добавление карточки
 
+// if (popup.classList.contains('popup_opened')) {
+//   closePopup(popup)
+// }
+
 // открытие и закрытие попапа
 const openPopup = (popup) => { 
   popup.classList.add('popup_opened'); 
@@ -25,15 +29,15 @@ const closePopup = (popup) => {
 const popupList = document.querySelectorAll('.popup');
 popupList.forEach((item) => {
    item.addEventListener('click', (evt) => {
-    closePopup(evt.target)
+    closePopup(evt.target);
    });
 });
 
 // закрытие по нажатию на esc
 const closeByEsc = (evt) => {
   if (evt.key === 'Escape') {
-    const popup = document.querySelector('.popup_opened');
-    popup.classList.remove('popup_opened');
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
   }
 }
 
@@ -59,11 +63,9 @@ function openProfileEditPopup () {
 buttonEditProfile.addEventListener ('click', openProfileEditPopup);
 
 function handleFormEditSubmit (evt) {
-    evt.preventDefault(); // дефолт отправки, сейчас не важно
-
+    evt.preventDefault(); // дефолт отправки
     nameStart.textContent = nameInput.value;
     jobStart.textContent = jobInput.value;
-    
     closePopup(popupEdit);
 }
 formEdit.addEventListener('submit', handleFormEditSubmit);
@@ -115,7 +117,7 @@ const renderCard = (card) => {
 initialCards.forEach(renderCard);
 
 const handleAddNewCard = (evt) => {
-  evt.preventDefault(); // дефолт отправки, сейчас не важно
+  evt.preventDefault(); // дефолт отправки
   const newName = mestoNameInput.value;
   const newLink = mestoLinkInput.value;
   const newCard = {
