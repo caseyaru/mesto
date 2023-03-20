@@ -1,3 +1,9 @@
+import { initialCards } from './cards.js';
+import { formValidationConfig, resetErrors } from './validate.js';
+// import { hi } from './Card.js';
+// import { hi } from './FormValidator.js';
+// модули подключены, умничка
+
 // окошки
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add');

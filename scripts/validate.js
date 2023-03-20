@@ -65,3 +65,5 @@ const resetErrors = (form, config) => {
     const buttonSubmit = form.querySelector(config.submitButtonSelector);
     toggleButton (buttonSubmit, form, config);
 }
+
+export { formValidationConfig, resetErrors };
