@@ -1,8 +1,8 @@
 import { initialCards } from './cards.js';
 import { formValidationConfig, resetErrors } from './validate.js';
-// import { hi } from './Card.js';
+import { Card } from './Card.js';
 // import { hi } from './FormValidator.js';
-// модули подключены, умничка
+// модули подключены
 
 // окошки
 const popupEdit = document.querySelector('.popup_type_edit');
@@ -17,10 +17,6 @@ const buttonAddCard = document.querySelector('.profile__add-button');
 const formEdit = document.forms.editing; // редактирование профиля
 const formCard = document.forms.adding; // добавление карточки
 
-// if (popup.classList.contains('popup_opened')) {
-//   closePopup(popup)
-// }
-
 // открытие и закрытие попапа
 const openPopup = (popup) => { 
   popup.classList.add('popup_opened'); 
@@ -30,6 +26,7 @@ const closePopup = (popup) => {
   popup.classList.remove('popup_opened'); 
   document.removeEventListener('keydown', closeByEsc);
 }
+
 
 // закрытие по нажатию на оверлей
 const popupList = document.querySelectorAll('.popup');
@@ -77,62 +74,22 @@ function handleFormEditSubmit (evt) {
 formEdit.addEventListener('submit', handleFormEditSubmit);
 
 // КАРТОЧКИ
-const mestoNameInput = document.querySelector('.popup__field_type_mesto-name');
-const mestoLinkInput = document.querySelector('.popup__field_type_mesto-link');
 
 buttonAddCard.addEventListener('click', () => { openPopup(popupAdd); });
-
-const cardsContainer = document.querySelector('.elements__cards');
-const cardTemplate = document.getElementById('card');
-
 const mestoLink = popupImg.querySelector('.popup__image');
 const mestoName = popupImg.querySelector('.popup__description');
 
-const createCard = (card) => {
-  const cardElement = cardTemplate.content.cloneNode(true);
-  const cardName = cardElement.querySelector('.elements__text');
-  const cardImage = cardElement.querySelector('.elements__image');
+const cardsContainer = document.querySelector('.elements__cards');
 
-  cardName.textContent = card.name;
-  cardImage.src = card.link;
-  cardImage.alt = `Фотография пользователя; место на фотографии - ${cardName.textContent}`;
+// создание карточки
+initialCards.forEach((item) => {
+  // создаём экземпляр карточки
+  const card = new Card(item.name, item.link);
+  // создаём карточку и возвращаем наружу
+  const cardElement = card.generateCard();
 
-  const buttonLike = cardElement.querySelector('.elements__heart');
-  buttonLike.addEventListener('click', (event) => event.target.classList.toggle('elements__heart_active'));
-  
-  const buttonDelete = cardElement.querySelector('.elements__delete');
-  buttonDelete.addEventListener('click', (event) => {
-    const cardItem = event.target.closest('.elements__card');
-    cardItem.remove();
-  });
-  
-  cardImage.addEventListener('click', () => {
-    openPopup(popupImg);
-    mestoName.textContent = card.name;
-    mestoLink.src = card.link;
-    mestoLink.alt = `Фотография пользователя; место на фотографии - ${mestoName.textContent}`;
-  });
-  return cardElement;
-}
+  // добавляем в DOM
+  cardsContainer.append(cardElement);
+});
 
-const renderCard = (card) => {
-  const cardElement = createCard(card);
-  cardsContainer.prepend(cardElement);
-}
-
-initialCards.forEach(renderCard);
-
-const handleAddNewCard = (evt) => {
-  evt.preventDefault(); // дефолт отправки
-  const newName = mestoNameInput.value;
-  const newLink = mestoLinkInput.value;
-  const newCard = {
-    name: newName,
-    link: newLink
-  }
-  renderCard(newCard);
-  evt.target.reset();
-  resetErrors(formCard, formValidationConfig);
-  closePopup(popupAdd);
-}
-formCard.addEventListener('submit', handleAddNewCard);
+export { openPopup, popupImg, mestoName, mestoLink };
