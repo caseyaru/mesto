@@ -1,7 +1,6 @@
-import { initialCards } from './cards.js';
+
 import { formValidationConfig, resetErrors } from './validate.js';
-import { Card } from './Card.js';
-// import { hi } from './FormValidator.js';
+import { Card, initialCards } from './Card.js';
 // модули подключены
 
 // окошки
