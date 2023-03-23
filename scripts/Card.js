@@ -49,11 +49,14 @@ class Card {
 	generateCard() {
 	  // в _element будет темплейт
 	  this._element = this._getTemplate();
-      this._setEventListeners();
+    this._image = this._element.querySelector('.elements__image');
+    this._like = this._element.querySelector('.elements__heart');
+    this._setEventListeners();
 	
 	  // добавим данные
-	  this._element.querySelector('.elements__image').src = this._link;
+	  this._image.src = this._link;
 	  this._element.querySelector('.elements__text').textContent = this._name;
+    this._image.alt = `Фотография пользователя; место на фотографии - ${this._name}`;
 	
 	  // вернём элемент наружу
 	  return this._element;
@@ -61,7 +64,7 @@ class Card {
 
   _setEventListeners() {
     // лайк
-    this._element.querySelector('.elements__heart').addEventListener('click', () => {
+    this._like.addEventListener('click', () => {
       this._handleLikeClick();
     });
     // удаление
@@ -69,13 +72,13 @@ class Card {
       this._handleDeleteClick();
     });
     // попап с изображением
-    this._element.querySelector('.elements__image').addEventListener('click', () => {
+    this._image.addEventListener('click', () => {
       this._handlePopupImg();
     });
   }
 
   _handleLikeClick() {
-    this._element.querySelector('.elements__heart').classList.toggle('elements__heart_active');
+    this._like.classList.toggle('elements__heart_active');
   }
 
   _handleDeleteClick(evt) {

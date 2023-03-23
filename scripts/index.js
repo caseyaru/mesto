@@ -27,7 +27,7 @@ const buttonAddCard = document.querySelector('.profile__add-button');
 const formEdit = document.forms.editing; // редактирование профиля
 const formCard = document.forms.adding; // добавление карточки
 // валидация форм
-const validatorEditForm = new FormValidator(formValidationConfig,formEdit);
+const validatorEditForm = new FormValidator(formValidationConfig, formEdit);
 const validatorAddForm = new FormValidator(formValidationConfig, formCard);
 validatorEditForm.enableValidation();
 validatorAddForm.enableValidation();
@@ -75,7 +75,7 @@ const jobStart = document.querySelector('.profile__text');
 function openProfileEditPopup () {
   nameInput.value = nameStart.textContent;
   jobInput.value = jobStart.textContent;
-  validatorEditForm.resetErrors(formEdit);
+  // validatorEditForm.resetErrors(formEdit);
   openPopup(popupEdit);
 }
 buttonEditProfile.addEventListener ('click', openProfileEditPopup);
@@ -115,8 +115,8 @@ const handleAddNewCard = (evt) => {
   const newCard = new Card(mestoNameInput.value, mestoLinkInput.value);
   const cardElement = newCard.generateCard();
   cardsContainer.prepend(cardElement);
-  validatorAddForm.resetErrors(formAdd);
-  // evt.target.reset(); // перенесла из старого кода, не уверена, можно ли оставить
+  // validatorAddForm.resetErrors(formAdd);
+  evt.target.reset();
   closePopup(popupAdd);
 }
 formCard.addEventListener('submit', handleAddNewCard);
