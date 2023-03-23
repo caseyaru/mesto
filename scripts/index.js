@@ -1,7 +1,18 @@
 
-import { formValidationConfig, resetErrors } from './validate.js';
+// import { formValidationConfig, resetErrors } from './validate.js';
 import { Card, initialCards } from './Card.js';
+import { FormValidator } from './FormValidator.js';
 // модули подключены
+
+const formValidationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__field',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
+  inputErrorClass: 'popup__field_type_error',
+  errorClass: 'popup__error_visible'
+}
+
 
 // окошки
 const popupEdit = document.querySelector('.popup_type_edit');
@@ -15,6 +26,11 @@ const buttonAddCard = document.querySelector('.profile__add-button');
 // формы
 const formEdit = document.forms.editing; // редактирование профиля
 const formCard = document.forms.adding; // добавление карточки
+// валидация форм
+const validatorEditForm = new FormValidator(formValidationConfig,formEdit);
+const validatorAddForm = new FormValidator(formValidationConfig, formCard);
+validatorEditForm.enableValidation();
+validatorAddForm.enableValidation();
 
 // открытие и закрытие попапа
 const openPopup = (popup) => { 
@@ -59,7 +75,7 @@ const jobStart = document.querySelector('.profile__text');
 function openProfileEditPopup () {
   nameInput.value = nameStart.textContent;
   jobInput.value = jobStart.textContent;
-  resetErrors(formEdit, formValidationConfig);
+  validatorEditForm.resetErrors(formEdit);
   openPopup(popupEdit);
 }
 buttonEditProfile.addEventListener ('click', openProfileEditPopup);
@@ -77,10 +93,12 @@ formEdit.addEventListener('submit', handleFormEditSubmit);
 buttonAddCard.addEventListener('click', () => { openPopup(popupAdd); });
 const mestoLink = popupImg.querySelector('.popup__image');
 const mestoName = popupImg.querySelector('.popup__description');
+const mestoNameInput = document.querySelector('.popup__field_type_mesto-name');
+const mestoLinkInput = document.querySelector('.popup__field_type_mesto-link');
 
 const cardsContainer = document.querySelector('.elements__cards');
 
-// создание карточки
+// создание карточки из коробки
 initialCards.forEach((item) => {
   // создаём экземпляр карточки
   const card = new Card(item.name, item.link);
@@ -88,7 +106,18 @@ initialCards.forEach((item) => {
   const cardElement = card.generateCard();
 
   // добавляем в DOM
-  cardsContainer.append(cardElement);
+  cardsContainer.prepend(cardElement);
 });
+
+// новая карточка
+const handleAddNewCard = (evt) => {
+  evt.preventDefault(); // дефолт отправки
+  const newCard = new Card(mestoNameInput.value, mestoLinkInput.value);
+  const cardElement = newCard.generateCard();
+  cardsContainer.prepend(cardElement);
+  validatorAddForm.resetErrors(formAdd);
+  closePopup(popupAdd);
+}
+formCard.addEventListener('submit', handleAddNewCard);
 
 export { openPopup, popupImg, mestoName, mestoLink };

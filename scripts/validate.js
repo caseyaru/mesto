@@ -5,7 +5,7 @@ const formValidationConfig = {
     inactiveButtonClass: 'popup__submit_disabled',
     inputErrorClass: 'popup__field_type_error',
     errorClass: 'popup__error_visible'
-}
+  }
 
 // показать сообщение об ошибке
 const showInputError = (input, config, errorElement) => {

@@ -59,23 +59,35 @@ class Card {
 	  return this._element;
 	}
 
-    _setEventListeners() {
-        // лайк
-        this._element.querySelector('.elements__heart').addEventListener('click', (evt) => {
-            evt.target.classList.toggle('elements__heart_active')
-        });
-        // удаление
-        this._element.querySelector('.elements__delete').addEventListener('click', (evt) => {
-            evt.target.closest('.elements__card').remove();
-        });
-        // попап с изображением
-        this._element.querySelector('.elements__image').addEventListener('click', () => {
-            openPopup(popupImg);
-            mestoName.textContent = this._name;
-            mestoLink.src = this._link;
-            mestoLink.alt = `Фотография пользователя; место на фотографии - ${mestoName.textContent}`;
-        });
-    }
+  _setEventListeners() {
+    // лайк
+    this._element.querySelector('.elements__heart').addEventListener('click', () => {
+      this._handleLikeClick();
+    });
+    // удаление
+    this._element.querySelector('.elements__delete').addEventListener('click', () => {
+      this._handleDeleteClick();
+    });
+    // попап с изображением
+    this._element.querySelector('.elements__image').addEventListener('click', () => {
+      this._handlePopupImg();
+    });
+  }
+
+  _handleLikeClick() {
+    this._element.querySelector('.elements__heart').classList.toggle('elements__heart_active');
+  }
+
+  _handleDeleteClick(evt) {
+    this._element.remove();
+  }
+
+  _handlePopupImg() {
+    openPopup(popupImg);
+    mestoName.textContent = this._name;
+    mestoLink.src = this._link;
+    mestoLink.alt = `Фотография пользователя; место на фотографии - ${mestoName.textContent}`;
+  }
 }
 
 export { Card, initialCards };
