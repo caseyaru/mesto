@@ -75,7 +75,7 @@ const jobStart = document.querySelector('.profile__text');
 function openProfileEditPopup () {
   nameInput.value = nameStart.textContent;
   jobInput.value = jobStart.textContent;
-  // validatorEditForm.resetErrors(formEdit);
+  validatorEditForm.resetErrors();
   openPopup(popupEdit);
 }
 buttonEditProfile.addEventListener ('click', openProfileEditPopup);
@@ -115,9 +115,10 @@ const handleAddNewCard = (evt) => {
   const newCard = new Card(mestoNameInput.value, mestoLinkInput.value);
   const cardElement = newCard.generateCard();
   cardsContainer.prepend(cardElement);
-  // validatorAddForm.resetErrors(formAdd);
+  validatorAddForm.resetErrors();
   evt.target.reset();
   closePopup(popupAdd);
+  validatorAddForm.deactivateButton();
 }
 formCard.addEventListener('submit', handleAddNewCard);
 
