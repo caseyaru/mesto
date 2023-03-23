@@ -116,6 +116,7 @@ const handleAddNewCard = (evt) => {
   const cardElement = newCard.generateCard();
   cardsContainer.prepend(cardElement);
   validatorAddForm.resetErrors(formAdd);
+  // evt.target.reset(); // перенесла из старого кода, не уверена, можно ли оставить
   closePopup(popupAdd);
 }
 formCard.addEventListener('submit', handleAddNewCard);
