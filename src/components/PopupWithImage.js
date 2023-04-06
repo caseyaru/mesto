@@ -12,7 +12,4 @@ export class PopupWithImage extends Popup {
         this._image.alt = evt.target.alt;
         this._description.textContent = evt.target.alt;
     }
-    setEventListeners(){
-        super.setEventListeners();
-    }
 }

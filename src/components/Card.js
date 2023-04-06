@@ -1,15 +1,16 @@
 class Card {
 	// в карточке название места, изображение, открытие по клику
-	constructor(name, link, handleCardClick) {
+	constructor(name, link, template, handleCardClick) {
 		this._name = name;
 		this._link = link;
     this._handleCardClick = handleCardClick;
+    this._template = template;
 	}
 	
 	// копирование темплейта из хтмл
   _getTemplate() {
     const cardElement = document
-      .querySelector('#card')
+      .querySelector(this._template)
       .content
       .querySelector('.elements__card')
       .cloneNode(true);

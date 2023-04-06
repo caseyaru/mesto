@@ -6,6 +6,8 @@ class FormValidator {
         this._inactiveButtonClass = config.inactiveButtonClass;
         this._inputErrorClass = config.inputErrorClass;
         this._errorClass = config.errorClass;
+        this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+        this._buttonSubmit = this._form.querySelector(this._submitButtonSelector);
     }
 
     _showInputError(input, errorElement) {
@@ -32,21 +34,24 @@ class FormValidator {
         }
     }
 
-    // валидация всех форм
-    enableValidation() {
+    // слушатели
+    _setEventListeners() {
         this._form.addEventListener('input', (evt) => {
-            const inputList = this._form.querySelectorAll(this._inputSelector);
-            inputList.forEach(() => {
+            this._inputList.forEach(() => {
                 this._toggleButton();
                 this._checkInputValidity(evt);
             })
         });
+    }
+
+    // валидация всех форм
+    enableValidation() {
+        this._setEventListeners();
         this._toggleButton();
     }
 
     // кнопка
     _toggleButton() {
-        this._buttonSubmit = this._form.querySelector(this._submitButtonSelector);
         const isFormValid = this._form.checkValidity();
         this._buttonSubmit.disabled = !isFormValid;
         this._buttonSubmit.classList.toggle(this._inactiveButtonClass, !isFormValid);
@@ -54,8 +59,7 @@ class FormValidator {
 
     // сброс ошибок валидации при повторном открытии попапа
     resetErrors() {
-        const inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
-        inputList.forEach((input) => {
+        this._inputList.forEach((input) => {
             const errorElement = this._form.querySelector(`#${input.id}-error`);
             this._hideInputError(input, errorElement);
         });
