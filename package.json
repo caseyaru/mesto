@@ -1,4 +1,18 @@
 {
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Некоторые земли хочется навсегда сохранить в памяти, возвращаться к ним в воспоминаниях и подолгу рассматривать фотографии... Для этого и предназначено \"Место\". Здесь вы можете хранить локации, где некогда побывали, которые особенно запомнились и понравились, а также просматривать и лайкать места других. Позвольте себе путешествовать, не выходя из Интернета!",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caseyaru/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caseyaru/mesto/issues"
+  },
+  "homepage": "https://github.com/caseyaru/mesto#readme",
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
