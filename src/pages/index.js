@@ -7,6 +7,7 @@ import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { Api } from '../components/Api.js';
 import './index.css'
+import '../index.html'
 
 const api = new Api({
   url: 'https://mesto.nomoreparties.co/v1/cohort-64',
