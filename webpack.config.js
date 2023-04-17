@@ -26,7 +26,7 @@ module.exports = {
       },
       {
         test: /\.html$/i,
-        loader: 'html-loader',
+        use: ['html-loader']
       },
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
