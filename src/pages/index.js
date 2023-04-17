@@ -5,7 +5,16 @@ import { UserInfo } from '../components/UserInfo.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
+import { Api } from '../components/Api.js';
 import './index.css'
+
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-64',
+  headers: {
+    authorization: '5341efdf-0efa-4de4-9e2d-8c8a726218b1',
+    'Content-Type': 'application/json'
+  }
+});
 
 // функция создания карточки для переиспользования
 function createCard (name, link, template, handleCardClick) {
