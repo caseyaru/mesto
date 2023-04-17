@@ -16,21 +16,42 @@ const api = new Api({
   }
 });
 
+// промисы для профиля и секции
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, initialCards]) => {
+    user.setUserInfo(userData);
+    section.renderItems(initialCards);
+  })
+  .catch(console.log('Произошла ошибка'));
+
+  //СТАРЫЙ ВАРИАНТ СОЗДАНИЯ КАРТОЧЕК
 // функция создания карточки для переиспользования
-function createCard (name, link, template, handleCardClick) {
-  const card = new Card(name, link, template, handleCardClick);
+// function createCard (id, name, link, template, handleCardClick) {
+//   const card = new Card(id, name, link, template, handleCardClick);
+//   const newCard = card.generateCard();
+//   return newCard;
+// }
+
+// общее создание карточки с айдишкой
+function createCard(item){
+  const card = new Card(
+    user.userId,
+    item.name, item.link, 
+    '#card', 
+    (evt) => popupImg.open(evt)
+  );
   const newCard = card.generateCard();
   return newCard;
 }
 
-// секция и создание карточек
+// отрисовка карточек секцией
 const section = new Section({data: initialCards, 
   renderer:(item) => {
-    const card = createCard(item.name, item.link, '#card', (evt) => popupImg.open(evt));
-    section.addItem(card);
+    //const card = createCard(user.userId, item.name, item.link, '#card', (evt) => popupImg.open(evt));
+    section.addItem(createCard(item));
   }},
   '.elements__cards');
-section.renderItems();
+// section.renderItems();
 
 // попап с картинкой
 const popupImg = new PopupWithImage('.popup_type_image');
@@ -43,10 +64,20 @@ validatorEditForm.enableValidation();
 validatorAddForm.enableValidation();
 
 // добавление карточки
+// const popupAdd = new PopupWithForm('.popup_type_add', (card) => {
+//   const newCard = createCard(card.mestoName, card.mestoLink, '#card', (evt) => popupImg.open(evt));
+//   section.addItem(newCard);}
+// );
+
 const popupAdd = new PopupWithForm('.popup_type_add', (card) => {
-  const newCard = createCard(card.mestoName, card.mestoLink, '#card', (evt) => popupImg.open(evt));
-  section.addItem(newCard);}
-);
+  api.addCard(card)
+    .then((res) => {
+      popupAdd.close()
+      section.addItem(createCard(res))
+    })
+    .catch(console.log('Произошла ошибка'))
+})
+//ПОЧЕМУ ТЫ НЕ РАБОТАЕШЬ
 popupAdd.setEventListeners();
 buttonAddCard.addEventListener('click', () => {
   validatorAddForm.resetErrors();
@@ -54,9 +85,10 @@ buttonAddCard.addEventListener('click', () => {
 })
 
 // редактировать профиль
-const user = new UserInfo('.profile__name', '.profile__text');
+const user = new UserInfo('.profile__name', '.profile__text', '.profile__avatar');
 const popupEdit = new PopupWithForm('.popup_type_edit', (person) => {
   user.setUserInfo(person.profileName, person.profileText)
+  //в скобки выше добавить инпут аватара
 });
 popupEdit.setEventListeners();
 buttonEditProfile.addEventListener('click', () => {

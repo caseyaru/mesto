@@ -1,11 +1,17 @@
 class Card {
 	// в карточке название места, изображение, открытие по клику
-	constructor(name, link, template, handleCardClick) {
+	constructor(id, name, link, template, handleCardClick) {
+    this.userId = id;
 		this._name = name;
 		this._link = link;
     this._handleCardClick = handleCardClick;
     this._template = template;
 	}
+
+  //
+  getId(){
+    return this._cardId
+  }
 	
 	// копирование темплейта из хтмл
   _getTemplate() {

@@ -9,7 +9,7 @@ export class Section {
         this._container.prepend(element);
     }
     // создание массива карточек
-    renderItems() {
+    renderItems(cards) {
         this._renderedItems.forEach(item => {
             this._renderer(item);
         });
