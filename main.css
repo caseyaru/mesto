@@ -27,7 +27,7 @@
 .popup_type_image{background-color:rgba(0,0,0,.9)}
 .popup_opened{opacity:1;visibility:visible}
 .popup__container{background-color:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);box-sizing:border-box;display:flex;flex-direction:column;max-width:430px;min-height:330px;padding:34px 36px 36px;position:relative;width:100%}@media screen and (max-width:463px){.popup__container{max-width:282px;min-height:322px;padding:25px 22px;width:100%}}
-.popup__container_type_avatar{height:100%;max-height:272px}
+.popup__container_type_avatar{min-height:272px}
 .popup__img-container{position:relative}
 .popup__image{max-height:75vh;max-width:75vw}
 .popup__description{color:#fff;font-family:Inter;font-size:12px;font-style:normal;font-weight:400;line-height:15px}
