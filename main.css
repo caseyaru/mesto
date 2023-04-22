@@ -18,10 +18,10 @@
 .elements__image{border-radius:10px 10px 0 0;cursor:pointer;height:282px;-o-object-fit:cover;object-fit:cover;-o-object-position:center;object-position:center;width:282px}
 .elements__delete{background-color:transparent;background-image:url(823b0cf1b0b7e9cb7cad.svg);background-repeat:no-repeat;background-size:contain;border:none;cursor:pointer;height:19px;position:absolute;right:20px;top:20px;width:18px;z-index:2}.elements__delete:hover{opacity:.6}
 .elements__string{display:flex;flex-direction:row;justify-content:space-between;margin:22px 15px 28px 21px;max-width:246px}
-.elements__container{align-items:center;display:flex;flex-direction:column;gap:3px;justify-content:space-between}
+.elements__container{align-items:center;display:flex;flex-direction:column;gap:3px;justify-content:space-between;max-height:35px;max-width:22px}
 .elements__text{font-family:Inter,Arial,sans-serif;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;max-width:190px;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}
 .elements__heart{background-color:transparent;background-image:url(0bc60938ca96a5dcae18.svg);background-position:bottom;background-repeat:no-repeat;background-size:contain;border:none;cursor:pointer;height:19px;margin:5px 5px 0 0;padding:0;width:22px}.elements__heart:hover{opacity:.5}
-.elements__like-counter{font-family:Inter,Arial,sans-serif;font-size:13px;font-style:normal;font-weight:400;line-height:16px;text-align:center}
+.elements__like-counter{font-family:Inter,Arial,sans-serif;font-size:13px;font-style:normal;font-weight:400;line-height:16px;margin:0;padding:0;text-align:center}
 .elements__heart_active{background-image:url(fe17a515669479b1e649.svg)}
 .footer{align-items:center;margin:0 auto 60px;max-width:880px}@media screen and (max-width:917px){.footer{max-width:581px}}@media screen and (max-width:610px){.footer{margin:0 auto 36px;max-width:282px}}
 .footer__author{color:#545454;font-family:Inter,Arial,sans-serif;font-size:18px;font-style:normal;font-weight:400;line-height:22px;margin:0;padding:0}@media screen and (max-width:610px){.footer__author{font-size:14px;line-height:17px;max-width:282px}}
