@@ -34,13 +34,21 @@ const formValidationConfig = {
     }
 ];
 
+// формы
 const formEdit = document.forms.editing; // редактирование профиля
 const formCard = document.forms.adding; // добавление карточки
-const mestoNameInput = document.querySelector('.popup__field_type_mesto-name');
-const mestoLinkInput = document.querySelector('.popup__field_type_mesto-link');
+const formAvatar = document.forms.avatar;
+
+// кнопки
+const buttonEditAvatar = document.querySelector('.profile__edit-avatar');
 const buttonAddCard = document.querySelector('.profile__add-button');
 const buttonEditProfile = document.querySelector('.profile__edit-button');
+
+
+//инпуты
+const mestoNameInput = document.querySelector('.popup__field_type_mesto-name');
+const mestoLinkInput = document.querySelector('.popup__field_type_mesto-link');
 const nameInput = document.querySelector('.popup__field_type_name');
 const jobInput = document.querySelector('.popup__field_type_text');
 
-export { formValidationConfig, initialCards, formEdit, formCard, mestoNameInput, mestoLinkInput, buttonAddCard, buttonEditProfile, nameInput, jobInput }
+export { formValidationConfig, initialCards, formEdit, formCard, formAvatar, mestoNameInput, mestoLinkInput, buttonAddCard, buttonEditProfile, buttonEditAvatar, nameInput, jobInput }

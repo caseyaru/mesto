@@ -1,22 +1,24 @@
 export class UserInfo {
-    constructor (name, job, avatar) {
+    constructor ({name, about, avatar}) {
         this._name = document.querySelector(name);
-        this._job = document.querySelector(job);
-        this._avatar = document.querySelector(avatar)
+        this._about = document.querySelector(about);
+        this._avatar = document.querySelector(avatar);
     }
     // возвращает данные пользователя
     getUserInfo () {
         return ({
             name: this._name.textContent,
-            job: this._job.textContent
+            about: this._about.textContent
         });
     }
-    // добавляет новые данные на страницу; при создании экземпляра будет указано profile.name и profile.info
-    setUserInfo ({name, job, avatar, id}) {
+    // добавляет новые данные на страницу
+    setUserInfo ({name, about, avatar, id}) {
         this._name.textContent = name;
-        this._job.textContent = job;
+        this._about.textContent = about;
         this._avatar.src = avatar;
         this.userId = id;
-        //this._avatar.style.backgroundImage = `url(${avatar})`;
+        
     }
 }
+
+//this._avatar.style.backgroundImage = `url(${avatar})`;

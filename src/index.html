@@ -8,11 +8,12 @@
    </head>
    <body class="page">
       <header class="header">
-         <img src="<%=require('./images/logo.svg')%>" class="header__logo" alt="Логотип «Место»">
+         <img src="./images/logo.svg" class="header__logo" alt="Логотип «Место»">
       </header>
       <main class="main">
          <section class="profile">
-            <img src="<%=require('./images/avatar.png')%>" class="profile__avatar" alt="Аватар пользователя">
+            <img src="./images/avatar.png" class="profile__avatar" alt="Аватар пользователя">
+            <div class="profile__edit-avatar"></div>
             <div class="profile__info">
                <div class="profile__title">
                   <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -31,7 +32,10 @@
                   <button type="button" class="elements__delete"></button>
                   <div class="elements__string">
                      <h2 class="elements__text"></h2>
-                     <button type="button" class="elements__heart"></button>
+                     <div class="elements__container">
+                        <button type="button" class="elements__heart"></button>
+                        <span class="elements__like-counter">0</span>
+                     </div>
                   </div>
                </li>
             </template>
@@ -73,11 +77,24 @@
             <button class="popup__close" type="button"></button>
          </div>
       </section>
-      <section class="popup popup_type_ok">
-         <div class="popup__container">
+
+      <section class="popup popup_type_delete">
+         <div class="popup__container popup__container_type_delete">
             <h3 class="popup__title">Вы уверены?</h3>
-            <form class="popup__form" name="editing" novalidate>
+            <form class="popup__form" name="deleting" novalidate>
                <button type="submit" class="popup__submit">Да</button>
+            </form>
+            <button class="popup__close" type="button"></button>
+         </div>
+      </section>
+
+      <section class="popup popup_type_avatar">
+         <div class="popup__container popup__container_type_avatar">
+            <h3 class="popup__title">Обновить аватар</h3>
+            <form class="popup__form" name="avatar" novalidate>
+               <input type="url" autocomplete="off" name="input-avatar" id="input-avatar" class="popup__field popup__field_type_avatar" placeholder="Ссылка на изображение" required>
+               <span id="input-avatar-error" class="popup__error"></span>
+               <button type="submit" class="popup__submit">Сохранить</button>
             </form>
             <button class="popup__close" type="button"></button>
          </div>
