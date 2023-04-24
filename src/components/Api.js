@@ -3,6 +3,13 @@ export class Api {
         this._url = config.url;
         this._headers = config.headers;
     }
+
+    _response(res){
+        if (res.ok) {
+            return res.json();
+        }
+        return Promise.reject(`Произошла ошибка ${res.status}`);
+    }
     
     // получение данных о пользователе (мне)
     getUserInfo(){
@@ -10,12 +17,7 @@ export class Api {
             method: "GET",
             headers: this._headers
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject("Произошла ошибка (запрос профиля)");
-        });
+        .then(res => this._response(res))
     }
 
     // загрузка новых данных пользователя
@@ -28,12 +30,7 @@ export class Api {
                 about: person["profileText"]
             })
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            } else {
-            return Promise.reject("Произошла ошибка (новый профиль)");}
-        });
+        .then(res => this._response(res))
     }
 
     putUserAvatar(data) {
@@ -44,12 +41,7 @@ export class Api {
                 avatar: data["input-avatar"]
             })
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            } else {
-            return Promise.reject("Произошла ошибка (новый аватар)");}
-        });
+        .then(res => this._response(res))
     }
 
     // получение карточек
@@ -58,12 +50,7 @@ export class Api {
             method: "GET",
             headers: this._headers
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject("Произошла ошибка (получение карточек)");
-        });
+        .then(res => this._response(res))
     }
 
     // добавление карточки
@@ -76,12 +63,7 @@ export class Api {
                 link: card["mestoLink"]
             })
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject("Произошла ошибка(добавление карточки)");
-        });
+        .then(res => this._response(res))
     }
 
     deleteCard(cardId){
@@ -89,12 +71,7 @@ export class Api {
             method: "DELETE",
             headers: this._headers
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject("Произошла ошибка(удаление карточки)");
-        });
+        .then(res => this._response(res))
     }
 
     likeCard(cardId){
@@ -102,12 +79,7 @@ export class Api {
             method: "PUT",
             headers: this._headers
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject("Произошла ошибка(лайк)");
-        });
+        .then(res => this._response(res))
     }
 
     unlikeCard(cardId){
@@ -115,12 +87,7 @@ export class Api {
             method: "DELETE",
             headers: this._headers
         })
-        .then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject("Произошла ошибка(лайк)");
-        });
+        .then(res => this._response(res))
     }
     
 }

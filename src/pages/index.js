@@ -77,7 +77,7 @@ const section = new Section(
 
 // добавление карточки
 const popupAdd = new PopupWithForm('.popup_type_add', (card) => {
-  popupAdd.renderLoading(true);
+  popupAdd.renderLoading(true, 'Сохранение...');
   api.addCard(card)
     .then((res) => {
       popupAdd.close()
@@ -112,7 +112,7 @@ popupImg.setEventListeners();
 // редактировать профиль
 const user = new UserInfo({name: '.profile__name', about: '.profile__text', avatar: '.profile__avatar'});
 const popupEdit = new PopupWithForm('.popup_type_edit', (person) => {
-  popupEdit.renderLoading(true);
+  popupEdit.renderLoading(true, 'Сохранение...');
   api.putUserInfo(person)
   .then((data) => {
     user.setUserInfo(data)
@@ -131,7 +131,7 @@ buttonEditProfile.addEventListener('click', () => {
 
 // обновить аватар
 const popupAvatar = new PopupWithForm('.popup_type_avatar', (data) => {
-  popupAvatar.renderLoading(true);
+  popupAvatar.renderLoading(true, 'Обновление...');
   api.putUserAvatar(data)
   .then((res) => {
     user.setUserInfo(res)

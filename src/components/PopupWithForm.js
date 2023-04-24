@@ -17,8 +17,6 @@ export class PopupWithForm extends Popup {
           evt.preventDefault();
             // передадим ей объект — результат работы _getInputValues
           this._handleFormSubmit(this._getInputValues());
-            // и закроем
-          this.close();
         })
     }
     
@@ -34,11 +32,13 @@ export class PopupWithForm extends Popup {
       return this._formValues;
     }
 
-    renderLoading(isLoading){
+    renderLoading(isLoading, text){
+      if (!this._buttonSubmit) return;
       if (isLoading) {
-        this._buttonSubmit.textContent = "Сохранение..."
+        this.default = this._buttonSubmit.textContent;
+        this._buttonSubmit.textContent = text;
       } else {
-        this._buttonSubmit.textContent = this._buttonSubmit.textContent;
+        this._buttonSubmit.textContent = this.default;
       }
     }
 
