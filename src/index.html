@@ -77,7 +77,6 @@
             <button class="popup__close" type="button"></button>
          </div>
       </section>
-
       <section class="popup popup_type_delete">
          <div class="popup__container popup__container_type_delete">
             <h3 class="popup__title">Вы уверены?</h3>
@@ -87,7 +86,6 @@
             <button class="popup__close" type="button"></button>
          </div>
       </section>
-
       <section class="popup popup_type_avatar">
          <div class="popup__container popup__container_type_avatar">
             <h3 class="popup__title">Обновить аватар</h3>
@@ -99,5 +97,26 @@
             <button class="popup__close" type="button"></button>
          </div>
       </section>
+      <section className="popup popup_type_avatar">
+         <div className="popup__container popup__container_type_avatar">
+           <h3 className="popup__title">Обновить аватар</h3>
+           <form className="popup__form" name="avatar" noValidate="">
+             <input
+               type="url"
+               autoComplete="off"
+               name="input-avatar"
+               id="input-avatar"
+               className="popup__field popup__field_type_avatar"
+               placeholder="Ссылка на изображение"
+               required=""
+             />
+             <span id="input-avatar-error" className="popup__error" />
+             <button type="submit" className="popup__submit">
+               Сохранить
+             </button>
+           </form>
+           <button className="popup__close" type="button" />
+         </div>
+       </section>
    </body>
 </html>
